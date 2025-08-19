@@ -1,3 +1,12 @@
+
+NOTE:
+- Swagger url:
+  http://localhost:8080/swagger-ui/index.html
+- API
+  http://localhost:8080/api/hello
+
+
+
 # Hello World Spring Boot API (Gradle) with Swagger
 
 A minimal Spring Boot project that opens Swagger UI and exposes a single `GET /api/hello` endpoint.
