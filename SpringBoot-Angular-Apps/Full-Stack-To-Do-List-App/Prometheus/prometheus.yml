@@ -1,0 +1,38 @@
+
+# Run Prometheus as docker container from this folder using:
+#   docker run -d -p 9090:9090 -v ${PWD}\prometheus.yml:/etc/prometheus/prometheus.yml --name prometheus-server prom/prometheus
+# Then open in browser:
+#   http://localhost:9090/query
+# Sample searches in Prometheus UI:
+#   custom_getAllTasks_callcount_total
+#   rate(http_server_requests_seconds_count{uri="/api/todos"}[10m])
+
+# Note ensure the apps rest is running, i.e. check swagger is working
+#   http://localhost:8080/swagger-ui/index.html#/
+# and that Prometheus actuator endpoint is working
+#   http://localhost:8080/actuator/prometheus
+# Note that need to call the app endpoint getAllTasks in swagger to increment custom counter before it 
+# will appear in the prometheus actuator endpoint above, then navigate to Prometheus running in docker 
+# and search for the custom metric, e.g. "custom_getAllTasks_callcount_total", note that is will substitute
+# underscores for periods. 
+
+# Run Grafana using docker also:
+#   docker run -d -p 3000:3000 --name grafana grafana/grafana
+# Then open in browser:
+#   http://localhost:3000/
+# Login as username "admin" and password "admin".
+# Note set the connection to the following as it is running from within Docker:
+#   http://host.docker.internal:9090
+
+getAllTasks
+global:
+  scrape_interval: 15s  # how often Prometheus scrapes targets
+
+scrape_configs:
+  - job_name: 'spring-boot-app'  # name in Prometheus UI
+    metrics_path: '/actuator/prometheus'  # Spring Boot's Prometheus endpoint
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+
+      
+      

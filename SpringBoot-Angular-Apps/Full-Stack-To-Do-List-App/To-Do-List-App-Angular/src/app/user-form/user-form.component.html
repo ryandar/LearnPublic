@@ -1,0 +1,28 @@
+<h2>User Registration Form</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <!-- Name Field -->
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      <small style="color: red;">Name is required.</small>
+    </div>
+  </div>
+
+  <!-- Email Field -->
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="userForm.get('email')?.touched">
+      <small *ngIf="userForm.get('email')?.errors?.['required']" style="color: red;">
+        Email is required.
+      </small>
+      <small *ngIf="userForm.get('email')?.errors?.['email']" style="color: red;">
+        Invalid email format.
+      </small>
+    </div>
+  </div>
+
+  <button type="submit">Register</button>
+</form>

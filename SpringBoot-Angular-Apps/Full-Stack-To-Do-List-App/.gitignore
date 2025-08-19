@@ -1,0 +1,67 @@
+# === Java / Spring Boot ===
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+**/logs/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+*.db
+*.h2.db
+*.sqlite
+
+# Maven
+.mvn/
+.settings/
+.idea/
+.project
+.classpath
+*.bat
+*.sh
+
+# Gradle (if used)
+.gradle/
+build/
+
+# === IntelliJ / Eclipse ===
+*.ipr
+*.iws
+*.iml
+.idea/
+*.classpath
+*.project
+*.settings/
+bin/
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Angular (frontend) ===
+/node_modules/
+/dist/
+/.angular/
+/.env
+.env.*
+/package-lock.json
+/yarn.lock
+
+# Optional: VS Code settings
+.vscode/
+
+# === Logs ===
+*.log
+logs/
+*.out
+
+# === Test Reports ===
+/test-output/
+/surefire-reports/
+/coverage/
+
+# === Temporary ===
+*.tmp
+*.swp
+*.bak
+*.orig

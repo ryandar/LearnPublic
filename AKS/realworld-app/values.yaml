@@ -1,0 +1,33 @@
+frontend:
+  replicaCount: 1
+
+  image:
+    repository: containerregistrysat01.azurecr.io/my-nginx-app
+    tag: latest
+    pullPolicy: Always
+
+  service:
+    type: ClusterIP
+    port: 80
+
+  resources: {}
+
+backend:
+  replicaCount: 2
+
+  image:
+    #repository: hashicorp/http-echo
+    repository: nginxdemos/hello  
+    tag: latest
+    pullPolicy: Always
+
+  #args:
+  #  - "-text=Hello from the backend!"
+
+  service:
+    type: ClusterIP
+    port: 80
+    # targetPort: 5678
+    targetPort: 80
+    
+  resources: {}

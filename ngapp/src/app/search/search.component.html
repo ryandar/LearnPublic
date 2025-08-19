@@ -1,0 +1,7 @@
+<!-- search.component.html -->
+<input type="text" [formControl]="searchControl" placeholder="Type to search..." />
+<button (click)="sendData()">Send Value</button>
+<ul *ngIf="results.length">
+  <li *ngFor="let result of results">{{ result }}</li>
+</ul>
+
